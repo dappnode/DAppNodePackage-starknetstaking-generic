@@ -95,7 +95,7 @@ sncast call \
 ```
 
 Example response:
-```json
+```
 response: [
     0x0,
     0xdeadbeef1,

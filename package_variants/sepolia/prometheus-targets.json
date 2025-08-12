@@ -1,0 +1,11 @@
+[
+    {
+        "labels": {
+            "package": "starknetstaking-sepolia.dnp.dappnode.eth",
+            "service": "staking"
+        },
+        "targets": [
+            "starknetstaking-sepolia.dappnode:9096"
+        ]
+    }
+]

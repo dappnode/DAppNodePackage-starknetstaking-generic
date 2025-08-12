@@ -1,0 +1,14 @@
+version: "3.5"
+services:
+  staking:
+    image: starknetstaking-sepolia.dnp.dappnode.eth:0.1.0
+    build:
+      context: staking
+      args:
+        UPSTREAM_VERSION: v0.2.7
+    ports:
+      - 9096:9095
+    environment:
+      PROVIDER_HTTP_URL: "http://juno-sepolia.public.dappnode:6070/v0_8"
+      PROVIDER_WS_URL: "ws://juno-sepolia.public.dappnode:6071/v0_8"
+      METRICS_PORT: 9096

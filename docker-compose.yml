@@ -1,0 +1,13 @@
+version: "3.5"
+services:
+  staking:
+    image: starknetstaking.dnp.dappnode.eth:0.1.0
+    build:
+      context: staking
+      args:
+        UPSTREAM_VERSION: v0.2.7
+    restart: unless-stopped
+    environment:
+      SIGNER_OPERATIONAL_ADDRESS: ""
+      SIGNER_PRIVATE_KEY: ""
+      LOG_LEVEL: info

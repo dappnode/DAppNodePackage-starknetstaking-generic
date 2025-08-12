@@ -1,0 +1,45 @@
+version: "2"
+fields:
+  - id: http
+    target:
+      type: environment
+      service: staking
+      name: PROVIDER_HTTP_URL
+    title: StarkNet HTTP URL
+    description: Juno or Pathfinder HTTP endpoint (v0_8 path)
+    required: true
+
+  - id: ws
+    target:
+      type: environment
+      service: staking
+      name: PROVIDER_WS_URL
+    title: StarkNet WebSocket URL
+    description: Juno or Pathfinder WS endpoint (v0_8 path)
+
+  - id: op_address
+    target:
+      type: environment
+      service: staking
+      name: SIGNER_OPERATIONAL_ADDRESS
+    title: Operational Address
+    description: Address used to sign attestations (Hot wallet)
+    required: true
+
+  - id: priv_key
+    target:
+      type: environment
+      service: staking
+      name: SIGNER_PRIVATE_KEY
+    title: Private Key (Hex)
+    description: Internal signing private key (keep secure)
+    secret: true
+
+  # TODO: Try to use Web3Signer 
+  # - id: external_url
+  #   target:
+  #     type: environment
+  #     service: staking
+  #     name: SIGNER_EXTERNAL_URL
+  #   title: External Signer URL
+  #   description: URL to external signer (if using that mode)

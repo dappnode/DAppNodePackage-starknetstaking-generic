@@ -1,0 +1,26 @@
+{
+  "upstreamVersion": "v0.2.7",
+  "upstreamRepo": "NethermindEth/starknet-staking-v2",
+  "upstreamArg": "UPSTREAM_VERSION",
+  "type": "service",
+  "description": "StarkNet validator attestation tool",
+  "author": "hector@dappnode.io",
+  "categories": [
+    "Blockchain"
+  ],
+  "keywords": [
+    "starknet",
+    "staking",
+    "validator",
+    "attestation"
+  ],
+  "architectures": [
+    "linux/amd64",
+    "linux/arm64"
+  ],
+  "links": {
+    "homepage": "https://nethermindeth.github.io/starknet-staking-v2/",
+    "api": "http://starknetstaking.dappnode:9095/metrics"
+  },
+  "license": "GPL-3.0"
+}

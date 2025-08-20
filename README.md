@@ -49,7 +49,6 @@ sncast account deploy --name rewards --network <sepolia|mainnet>
 ```
 
 ---
-
 ## 4️⃣ Approve the Staking Contract
 
 Before staking, the staking contract must be approved to pull STRK from your **staker** account.
@@ -63,13 +62,19 @@ sncast --account staker invoke \
 ```
 
 > **Tip:** 1 STRK = `1000000000000000000` FRI
-📌 **Juno URL:** [](http://juno-sepolia.public.dappnode:6070/v0_8) for _sepolia_ [](http://juno.public.dappnode:6060/v0_8) for _mainnet_
-📌 **Staking contract addresses:** [StarkNet Docs – Staking](https://docs.starknet.io/resources/chain-info/#staking)
+
+📌 **Juno URL:**
+- http://juno-sepolia.public.dappnode:6070/v0_8 for _sepolia_
+- http://juno.public.dappnode:6060/v0_8 for _mainnet_
+
+📌 **Staking contract addresses:** https://docs.starknet.io/resources/chain-info/#staking
+
 ---
 
 ## 5️⃣ Stake STRK
 
-Run the `stake` function from your **staker** account.
+Run the `stake` function from your **staker** account:
+
 
 ```bash
 sncast --account staker invoke \
@@ -81,10 +86,14 @@ sncast --account staker invoke \
   <OPERATIONAL_ADDRESS> \
   <AMOUNT_IN_FRI> 0x0 0
 ```
-📌 **Juno URL:** [](http://juno-sepolia.public.dappnode:6070/v0_8) for _sepolia_ [](http://juno.public.dappnode:6060/v0_8) for _mainnet_
-📌 **Staking contract addresses:** [StarkNet Docs – Staking](https://docs.starknet.io/resources/chain-info/#staking)
+📌 **Juno URL:**
+- http://juno-sepolia.public.dappnode:6070/v0_8 for _sepolia_
+- http://juno.public.dappnode:6060/v0_8 for _mainnet_
+
+📌 **Staking contract addresses:** https://docs.starknet.io/resources/chain-info/#staking
 
 ---
+
 
 ## 6️⃣ Verify Stake
 

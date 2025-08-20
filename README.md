@@ -57,8 +57,8 @@ Before staking, the staking contract must be approved to pull STRK from your **s
 sncast --account staker invoke \
   --contract-address <STRK_CONTRACT_ADDRESS> \
   --function approve \
-  --calldata <STAKING_CONTRACT_ADDRESS> <AMOUNT_IN_FRI>\
-  --url <JUNO_URL> \
+  --calldata <STAKING_CONTRACT_ADDRESS> <AMOUNT_IN_FRI> 0 \
+  --url <JUNO_URL>
 ```
 
 > **Tip:** 1 STRK = `1000000000000000000` FRI
@@ -84,8 +84,10 @@ sncast --account staker invoke \
   --calldata \
   <REWARDS_ADDRESS> \
   <OPERATIONAL_ADDRESS> \
-  <AMOUNT_IN_FRI> 0x0 0
+  <AMOUNT_IN_FRI> 0 0
 ```
+> **Tip:** 1 STRK = `1000000000000000000` FRI
+
 📌 **Juno URL:**
 - http://juno-sepolia.public.dappnode:6070/v0_8 for _sepolia_
 - http://juno.public.dappnode:6060/v0_8 for _mainnet_

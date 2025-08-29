@@ -1,22 +1,5 @@
 version: "2"
 fields:
-  - id: http
-    target:
-      type: environment
-      service: staking
-      name: PROVIDER_HTTP_URL
-    title: StarkNet HTTP URL
-    description: Juno or Pathfinder HTTP endpoint (v0_8 path)
-    required: true
-
-  - id: ws
-    target:
-      type: environment
-      service: staking
-      name: PROVIDER_WS_URL
-    title: StarkNet WebSocket URL
-    description: Juno or Pathfinder WS endpoint (v0_8 path)
-
   - id: op_address
     target:
       type: environment

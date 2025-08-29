@@ -19,8 +19,7 @@
     "linux/arm64"
   ],
   "links": {
-    "homepage": "https://nethermindeth.github.io/starknet-staking-v2/",
-    "api": "http://starknetstaking.dappnode:9095/metrics"
+    "home": "https://github.com/dappnode/DAppNodePackage-starknetstaking-generic"
   },
   "license": "GPL-3.0"
 }

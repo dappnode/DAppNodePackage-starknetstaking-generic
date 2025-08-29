@@ -1,5 +1,9 @@
 {
   "name": "starknetstaking-sepolia.dnp.dappnode.eth",
   "version": "0.1.0",
-  "shortDescription": "Attestation tool for StarkNet validators in Sepolia"
+  "shortDescription": "Attestation tool for StarkNet validators in Sepolia",
+  "links": {
+    "Voyager Block Explorer": "https://sepolia.voyager.online/",
+    "Starkscan Block Explorer": "https://sepolia.starkscan.co/"
+  }
 }

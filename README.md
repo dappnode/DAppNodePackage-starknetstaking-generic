@@ -49,6 +49,7 @@ To interact with the contracts we will use the block expolorer [Voyager](https:/
    - **amount** → Amount in FRI (1 STRK = `1000000000000000000`)  
 5. Submit the transaction.  
 
+
 📌 **Staking contract addresses:** [StarkNet Docs – Staking](https://docs.starknet.io/resources/chain-info/#staking)
 
 ![Voyager write contract stake](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/voyager-stake.png)
@@ -62,11 +63,9 @@ Once staked, set up your validator’s attestation client.
 In your `starknetstaking` DAppNode package, configure:
 
 - `OPERATIONAL ADDRESS` → Your operator account  
-- `PRIVATE_KEY` → The private key from your operator account (Export it using Argent Wallet)
+- `PRIVATE KEY` → The private key from your operator account (Export it using Argent Wallet)
 
 The attestation process will start automatically.
-
-![DAppNode staking package config](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/dappnode-staking-config.png)
 
 ---
 

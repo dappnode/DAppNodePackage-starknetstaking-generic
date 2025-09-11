@@ -3,7 +3,7 @@
   "upstreamRepo": "NethermindEth/starknet-staking-v2",
   "upstreamArg": "UPSTREAM_VERSION",
   "type": "service",
-  "description": "StarkNet validator attestation tool",
+  "description": "StarkNet validator attestation tool, see the [Dappnode Docs](https://docs.dappnode.io/docs/user/staking/starknet/solo) for more info",
   "author": "Dappnode Association <admin@dappnode.io> (https://github.com/dappnode)",
   "categories": [
     "Blockchain"

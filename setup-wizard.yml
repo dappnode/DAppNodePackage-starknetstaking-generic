@@ -6,7 +6,7 @@ fields:
       service: staking
       name: SIGNER_OPERATIONAL_ADDRESS
     title: Operational Address
-    description: Address used to sign attestations (Hot wallet)
+    description: "Address used to sign attestations (Hot wallet)\ Read the [docs](https://docs.dappnode.io/docs/user/staking/starknet/solo) to learn how to get it"
     required: true
     pattern: ^0x[0-9a-fA-F]{1,64}$
     patternErrorMessage: "Invalid contract address"

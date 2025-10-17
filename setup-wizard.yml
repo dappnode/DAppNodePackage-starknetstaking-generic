@@ -21,6 +21,26 @@ fields:
     secret: true
     required: true
 
+  - id: provider_http_url
+    target:
+      type: environment
+      service: staking
+      name: PROVIDER_HTTP_URL
+    title: StarkNet Provider HTTP URL
+    description: "HTTP URL of the StarkNet full node (e.g., Juno). Required for the validator to query blockchain data."
+    required: true
+    default: "http://juno.public.dappnode:6070/v0_8"
+
+  - id: provider_ws_url
+    target:
+      type: environment
+      service: staking
+      name: PROVIDER_WS_URL
+    title: StarkNet Provider WebSocket URL
+    description: "WebSocket URL of the StarkNet full node (e.g., Juno). Required for real-time blockchain updates."
+    required: true
+    default: "ws://juno.public.dappnode:6071/v0_8"
+
   # TODO: Try to use Web3Signer 
   # - id: external_url
   #   target:

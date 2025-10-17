@@ -10,4 +10,6 @@ services:
     environment:
       SIGNER_OPERATIONAL_ADDRESS: ""
       SIGNER_PRIVATE_KEY: ""
+      PROVIDER_HTTP_URL: ""
+      PROVIDER_WS_URL: ""
       LOG_LEVEL: info

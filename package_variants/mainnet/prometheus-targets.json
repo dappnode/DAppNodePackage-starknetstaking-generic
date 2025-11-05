@@ -1,0 +1,11 @@
+[
+    {
+        "labels": {
+            "package": "starknetstaking.dnp.dappnode.eth",
+            "service": "staking"
+        },
+        "targets": [
+            "starknetstaking.dappnode:9096"
+        ]
+    }
+]

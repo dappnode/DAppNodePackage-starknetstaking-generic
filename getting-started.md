@@ -12,6 +12,7 @@ We’ll use **[Argent Wallet](https://www.argent.xyz/)** and StarkNet's block ex
 ✅ [Argent Wallet](https://www.argent.xyz/) installed  
 ✅ Access to a synced StarkNet full node (e.g., [Juno](https://github.com/dappnode/DAppNodePackage-juno-generic))  
 ✅ Minimum STRK balance:
+
 - **Sepolia:** 1 STRK  
 - **Mainnet:** 20,000 STRK  
 
@@ -34,6 +35,7 @@ We’ll use **three StarkNet accounts** in Argent:
 ## 2️⃣ Fund and Deploy the Accounts
 
 - Fund your **staker** and **operator** accounts with the required STRK amount.  
+
 > On Sepolia, you can use the [StarkNet Faucet](https://starknet-faucet.vercel.app).  
 
 - Deploy your **accounts** in Argent Wallet following these steps:  
@@ -44,7 +46,7 @@ We’ll use **three StarkNet accounts** in Argent:
 ## 3️⃣ Export your operator address private key
 
 The _starknetstaking_ package needs your **operator** address private key to make the _attestations_.  
-You can obtain it from *Argent Wallet* following these steps:
+You can obtain it from _Argent Wallet_ following these steps:
 ![export PK](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/export-pk.gif)
 
 ---
@@ -58,8 +60,6 @@ You can obtain it from *Argent Wallet* following these steps:
    - **spender** → Starknet Staking Contract [Starknet Addresses](https://docs.starknet.io/resources/chain-info/#staking)  
    - **amount** → Amount in FRI (1 STRK = `1000000000000000000`)  
 5. Submit the transaction.  
-
-
 
 ## 5️⃣ Stake STRK
 
@@ -104,6 +104,7 @@ The attestation process will start automatically, and your validator will be liv
 ---
 
 **References:**
+
 - [Argent Wallet](https://www.argent.xyz/)  
 - [Voyager StarkNet Explorer](https://voyager.online/)  
 - [Starkscan Starknet Explorer](https://starkscan.co/)  

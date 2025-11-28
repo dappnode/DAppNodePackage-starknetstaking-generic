@@ -12,3 +12,4 @@ services:
       PROVIDER_HTTP_URL: ""
       PROVIDER_WS_URL: ""
       LOG_LEVEL: info
+      METRICS_PORT: 9096

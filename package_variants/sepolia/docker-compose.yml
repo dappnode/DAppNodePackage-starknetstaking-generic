@@ -6,6 +6,5 @@ services:
       args:
         UPSTREAM_VERSION: v0.2.7
     environment:
-      PROVIDER_HTTP_URL: "http://juno-sepolia.dappnode:6070/v0_8"
-      PROVIDER_WS_URL: "ws://juno-sepolia.dappnode:6071/v0_8"
-      METRICS_PORT: 9096
+      PROVIDER_HTTP_URL: "http://juno-sepolia.dappnode:6060/v0_8"
+      PROVIDER_WS_URL: "ws://juno-sepolia.dappnode:6061/v0_8"

@@ -8,4 +8,3 @@ services:
     environment:
       PROVIDER_HTTP_URL: "http://juno.dappnode:6060/v0_8"
       PROVIDER_WS_URL: "ws://juno.dappnode:6061/v0_8"
-      METRICS_PORT: 9096

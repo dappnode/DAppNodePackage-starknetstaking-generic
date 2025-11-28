@@ -1,7 +1,6 @@
 version: "3.5"
 services:
   staking:
-    image: starknetstaking.dnp.dappnode.eth:0.1.0
     build:
       context: staking
       args:

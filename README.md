@@ -92,13 +92,13 @@ Now that you’ve staked, you need to set up the validator client on your DAppNo
 
 During the inatallation process, you will need to instruduce the following info:
 
-- `OPERATIONAL ADDRESS` → Your operator address  
-- `PRIVATE KEY` → The private key from your operator account (exported from Ready Wallet in step #3)
+- `Operational Address` → The address for the `operator` Account you created via Ready Wallet in step #1
+- `Private Key` → The private key from your operator account (exported from Ready Wallet in step #3)
 
 ![Dappnode](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/dappnode-package.png)
 
 
-The attestation process will start automatically, and your validator will be live. You can check via the `staker_info_v1` contract in Voyager [Mainnet](https://voyager.online/contract/0x00ca1702e64c81d9a07b86bd2c540188d92a2c73cf5cc0e508d949015e7e84a7#readContract) or [Sepolia](https://sepolia.voyager.online/contract/0x03745Ab04a431fc02871A139be6B93D9260b0Ff3E779AD9c8B377183B23109F1#readContract)
+The attestation process will start automatically, and your validator will be live. You can check reward and more info via the `staker_info_v1` contract in Voyager [Mainnet](https://voyager.online/contract/0x00ca1702e64c81d9a07b86bd2c540188d92a2c73cf5cc0e508d949015e7e84a7#readContract) or [Sepolia](https://sepolia.voyager.online/contract/0x03745Ab04a431fc02871A139be6B93D9260b0Ff3E779AD9c8B377183B23109F1#readContract)
 
 ---
 

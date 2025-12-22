@@ -6,5 +6,5 @@ services:
       args:
         UPSTREAM_VERSION: v0.2.7
     environment:
-      PROVIDER_HTTP_URL: "http://execution.starknet.dncore.dappnode:6060/v0_9"
-      PROVIDER_WS_URL: "ws://execution.starknet.dncore.dappnode:6061/v0_9"
+      PROVIDER_HTTP_URL: "http://execution.starknet.staker.dappnode:6060/v0_9"
+      PROVIDER_WS_URL: "ws://execution.starknet.staker.dappnode:6061/v0_9"

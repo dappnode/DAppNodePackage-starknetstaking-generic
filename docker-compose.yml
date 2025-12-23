@@ -4,7 +4,7 @@ services:
     build:
       context: staking
       args:
-        UPSTREAM_VERSION: v0.2.9
+        UPSTREAM_VERSION: v0.3.0
     restart: unless-stopped
     environment:
       SIGNER_OPERATIONAL_ADDRESS: ""

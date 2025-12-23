@@ -23,9 +23,11 @@ fi
 echo "Starting Starknet Staking Validator..."
 
 # Health check function
+# Note: We don't use --fail because any HTTP response (including 404) indicates
+# the endpoint is reachable and listening, which is what we need to verify
 check_endpoint_health() {
   local url=$1
-  if curl --silent --fail --max-time "${TIMEOUT}" "${url}" > /dev/null 2>&1; then
+  if curl --silent --max-time "${TIMEOUT}" "${url}" > /dev/null 2>&1; then
     return 0
   else
     return 1

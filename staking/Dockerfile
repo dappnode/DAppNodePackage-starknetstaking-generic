@@ -7,7 +7,7 @@ FROM nethermind/starknet-staking-v2:${UPSTREAM_VERSION} AS upstream
 FROM alpine:3.21
 
 # Install runtime deps
-RUN apk add --no-cache bash ca-certificates
+RUN apk add --no-cache bash ca-certificates curl
 
 # Copy the validator binary from the upstream stage
 COPY --from=upstream /ko-app/validator /app/validator

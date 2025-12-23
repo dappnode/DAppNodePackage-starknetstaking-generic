@@ -6,6 +6,20 @@ MAX_RETRIES=${HEALTH_CHECK_MAX_RETRIES:-360}  # 360 retries = 2 hours with 20s s
 SLEEP_INTERVAL=${HEALTH_CHECK_SLEEP_INTERVAL:-20}  # 20 seconds between retries
 TIMEOUT=${HEALTH_CHECK_TIMEOUT:-5}  # 5 seconds timeout for each health check
 
+# Validate configuration values are positive integers
+if ! [[ "$MAX_RETRIES" =~ ^[0-9]+$ ]] || [ "$MAX_RETRIES" -lt 1 ]; then
+  echo "✗ ERROR: HEALTH_CHECK_MAX_RETRIES must be a positive integer. Got: $MAX_RETRIES"
+  exit 1
+fi
+if ! [[ "$SLEEP_INTERVAL" =~ ^[0-9]+$ ]] || [ "$SLEEP_INTERVAL" -lt 1 ]; then
+  echo "✗ ERROR: HEALTH_CHECK_SLEEP_INTERVAL must be a positive integer. Got: $SLEEP_INTERVAL"
+  exit 1
+fi
+if ! [[ "$TIMEOUT" =~ ^[0-9]+$ ]] || [ "$TIMEOUT" -lt 1 ]; then
+  echo "✗ ERROR: HEALTH_CHECK_TIMEOUT must be a positive integer. Got: $TIMEOUT"
+  exit 1
+fi
+
 echo "Starting Starknet Staking Validator..."
 
 # Health check function

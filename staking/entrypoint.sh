@@ -19,29 +19,30 @@ check_endpoint_health() {
 }
 
 # Wait for PROVIDER_HTTP_URL to be available
-if [ -n "${PROVIDER_HTTP_URL}" ]; then
-  echo "Checking if provider endpoint is available: ${PROVIDER_HTTP_URL}"
-  
-  attempt=1
-  while [ $attempt -le $MAX_RETRIES ]; do
-    echo "[Attempt ${attempt}/${MAX_RETRIES}] Checking endpoint health..."
-    
-    if check_endpoint_health "${PROVIDER_HTTP_URL}"; then
-      echo "✓ Endpoint is healthy and ready!"
-      break
-    else
-      if [ $attempt -eq $MAX_RETRIES ]; then
-        echo "✗ ERROR: Endpoint not available after ${MAX_RETRIES} attempts. Exiting."
-        exit 1
-      fi
-      echo "✗ Endpoint not ready yet. Waiting ${SLEEP_INTERVAL} seconds before retry..."
-      sleep "${SLEEP_INTERVAL}"
-      attempt=$((attempt + 1))
-    fi
-  done
-else
-  echo "WARNING: PROVIDER_HTTP_URL is not set. Skipping health check."
+if [ -z "${PROVIDER_HTTP_URL}" ]; then
+  echo "✗ ERROR: PROVIDER_HTTP_URL is not set. Cannot start validator without provider endpoint."
+  exit 1
 fi
+
+echo "Checking if provider endpoint is available: ${PROVIDER_HTTP_URL}"
+
+attempt=1
+while [ $attempt -le $MAX_RETRIES ]; do
+  echo "[Attempt ${attempt}/${MAX_RETRIES}] Checking endpoint health..."
+  
+  if check_endpoint_health "${PROVIDER_HTTP_URL}"; then
+    echo "✓ Endpoint is healthy and ready!"
+    break
+  else
+    if [ $attempt -eq $MAX_RETRIES ]; then
+      echo "✗ ERROR: Endpoint not available after ${MAX_RETRIES} attempts. Exiting."
+      exit 1
+    fi
+    echo "✗ Endpoint not ready yet. Waiting ${SLEEP_INTERVAL} seconds before retry..."
+    sleep "${SLEEP_INTERVAL}"
+    attempt=$((attempt + 1))
+  fi
+done
 
 echo "Starting validator application..."
 

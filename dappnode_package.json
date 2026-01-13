@@ -1,5 +1,5 @@
 {
-  "upstreamVersion": "v0.2.9",
+  "upstreamVersion": "v0.3.0",
   "upstreamRepo": "NethermindEth/starknet-staking-v2",
   "upstreamArg": "UPSTREAM_VERSION",
   "type": "service",

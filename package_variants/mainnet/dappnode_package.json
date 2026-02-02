@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "shortDescription": "Attestation tool for StarkNet validators",
   "links": {
+    "ui": "http://ui.starknetstaking.dappnode/",
     "Voyager Block Explorer": "https://voyager.online/",
     "Starkscan Block Explorer": "https://starkscan.co/"
   }

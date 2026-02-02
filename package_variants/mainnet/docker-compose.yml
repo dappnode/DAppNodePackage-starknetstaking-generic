@@ -8,3 +8,14 @@ services:
     environment:
       PROVIDER_HTTP_URL: "http://execution.starknet.staker.dappnode:6060/v0_9"
       PROVIDER_WS_URL: "ws://execution.starknet.staker.dappnode:6061/v0_9"
+  ui:
+    build:
+      args:
+        VITE_STARKNET_NETWORK: mainnet
+    environment:
+      RPC_TARGET: "http://execution.starknet.staker.dappnode:6060/v0_9"
+    networks:
+      - dncore_network
+networks:
+  dncore_network:
+    external: true

@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "shortDescription": "Attestation tool for StarkNet validators in Sepolia",
   "links": {
+    "ui": "http://ui.starknetstaking-sepolia.dappnode/",
     "Voyager Block Explorer": "https://sepolia.voyager.online/",
     "Starkscan Block Explorer": "https://sepolia.starkscan.co/"
   }

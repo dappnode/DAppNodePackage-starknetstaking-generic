@@ -1,0 +1,5 @@
+{
+  "name": "StarkStake - Starknet Validator Hub",
+  "description": "A comprehensive dashboard for stakers to manage validators, track rewards, and control staking operations on the Starknet network.",
+  "requestFramePermissions": []
+}

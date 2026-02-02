@@ -13,3 +13,22 @@ services:
       PROVIDER_WS_URL: ""
       LOG_LEVEL: info
       METRICS_PORT: 9096
+  ui:
+    build:
+      context: ui
+      args:
+        VITE_STARKNET_NETWORK: sepolia
+        VITE_STARKNET_RPC_URL: /rpc
+        VITE_STRK_TOKEN_ADDRESS: "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d"
+        VITE_STAKING_CONTRACT_ADDRESS_MAINNET: "0x0001d0bf9f687cd8aa550a8a07b9b5b1a9e7e4bb86dc1ceeab89cd156bf5ad29"
+        VITE_STAKING_CONTRACT_ADDRESS_SEPOLIA: "0x03745ab04a431fc02871a139be6b93d9260b0ff3e779ad9c8b377183b23109f1"
+        VITE_STAKING_MIN_MAINNET: 20000
+        VITE_STAKING_MIN_SEPOLIA: 1
+    restart: unless-stopped
+    environment:
+      RPC_TARGET: "http://execution.starknet-sepolia.dncore.dappnode:6060/v0_9"
+    networks:
+      - dncore_network
+networks:
+  dncore_network:
+    external: true

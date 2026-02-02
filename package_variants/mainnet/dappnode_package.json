@@ -6,5 +6,13 @@
     "ui": "http://ui.starknetstaking.dappnode/",
     "Voyager Block Explorer": "https://voyager.online/",
     "Starkscan Block Explorer": "https://starkscan.co/"
-  }
+  },
+  "exposable": [
+    {
+      "name": "StarknetStaking UI",
+      "description": "Web interface for StarkNet staking operations. HTTPS required for wallet connection.",
+      "serviceName": "ui",
+      "port": 80
+    }
+  ]
 }

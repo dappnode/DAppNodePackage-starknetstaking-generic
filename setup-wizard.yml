@@ -17,7 +17,7 @@ fields:
       service: staking
       name: SIGNER_PRIVATE_KEY
     title: Private Key
-    description: "Your private key for the operator address (Hot wallet) is required to sign attestations. Keep it safe and never share it with anyone."\ Read the [docs](https://docs.dappnode.io/docs/user/staking/starknet/solo/#3%EF%B8%8F%E2%83%A3-export-your-operator-address-private-key) to learn how to get it"
+    description: "Your private key for the operator address (Hot wallet) is required to sign attestations. Keep it safe and never share it with anyone.\ Read the [docs](https://docs.dappnode.io/docs/user/staking/starknet/solo/#3%EF%B8%8F%E2%83%A3-export-your-operator-address-private-key) to learn how to get it"
     secret: true
     required: true
 

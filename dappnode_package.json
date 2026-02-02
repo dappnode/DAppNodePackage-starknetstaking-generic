@@ -9,6 +9,7 @@
   "keywords": ["starknet", "staking", "validator", "attestation"],
   "architectures": ["linux/amd64", "linux/arm64"],
   "links": {
+    "ui": "http://ui.starknetstaking.dappnode/",
     "home": "https://github.com/dappnode/DAppNodePackage-starknetstaking-generic"
   },
   "license": "GPL-3.0"

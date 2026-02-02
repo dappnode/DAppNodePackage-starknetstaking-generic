@@ -7,6 +7,10 @@ import { useValidators } from './src/hooks/useValidators';
 import { useBalance } from './src/hooks/useBalance';
 import { useStaking } from './src/hooks/useStaking';
 import { Network, Validator } from './types';
+import { NETWORK } from './src/config';
+
+// Format network name for display (capitalize first letter)
+const targetNetwork = NETWORK.charAt(0).toUpperCase() + NETWORK.slice(1);
 
 const App: React.FC = () => {
   const auth = useAuth();
@@ -39,6 +43,7 @@ const App: React.FC = () => {
     address: auth.address ? `${auth.address.slice(0, 6)}...${auth.address.slice(-4)}` : null,
     walletType: auth.walletType as any,
     network: auth.network as Network,
+    isWrongNetwork: auth.isWrongNetwork,
   };
 
   // Get blockchain staker info
@@ -232,8 +237,13 @@ const App: React.FC = () => {
       />
 
       <main className="container mx-auto px-4 py-8 max-w-6xl">
-        {!auth.isConnected ? (
-          <Landing onConnect={handleConnect} />
+        {!auth.isConnected || auth.isWrongNetwork ? (
+          <Landing
+            onConnect={handleConnect}
+            targetNetwork={targetNetwork}
+            isWrongNetwork={auth.isWrongNetwork}
+            currentNetwork={auth.network}
+          />
         ) : (
           <Dashboard
             wallet={walletState}

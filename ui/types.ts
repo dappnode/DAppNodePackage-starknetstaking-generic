@@ -15,6 +15,7 @@ export interface WalletState {
   address: string | null;
   walletType: WalletType | null;
   network: Network;
+  isWrongNetwork: boolean;
 }
 
 export interface Validator {

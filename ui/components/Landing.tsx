@@ -3,9 +3,12 @@ import { Icons } from '../constants';
 
 interface LandingProps {
   onConnect: () => void;
+  targetNetwork?: string;
+  isWrongNetwork?: boolean;
+  currentNetwork?: string;
 }
 
-const Landing: React.FC<LandingProps> = ({ onConnect }) => {
+const Landing: React.FC<LandingProps> = ({ onConnect, targetNetwork, isWrongNetwork, currentNetwork }) => {
   const steps = [
     {
       icon: <Icons.Wallet />,
@@ -47,6 +50,15 @@ const Landing: React.FC<LandingProps> = ({ onConnect }) => {
 
   return (
     <div className="py-12 animate-in fade-in duration-700">
+      {isWrongNetwork && (
+        <div className="mb-8 p-6 bg-red-500/20 border border-red-500/50 rounded-2xl text-center">
+          <h2 className="text-xl font-bold text-red-400 mb-2">Wrong Network</h2>
+          <p className="text-white/80">
+            Please switch your wallet to <strong className="text-white">{targetNetwork}</strong> to use this app.
+            {currentNetwork && <> You are currently connected to <strong className="text-white">{currentNetwork}</strong>.</>}
+          </p>
+        </div>
+      )}
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h1 className="text-5xl md:text-6xl font-extrabold mb-[29px] pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/40 leading-[1.1]">
           Earn rewards while securing Starknet.
@@ -55,6 +67,12 @@ const Landing: React.FC<LandingProps> = ({ onConnect }) => {
           The simple, secure interface for Starknet validator staking.
           Become a key part of the network's decentralization in minutes.
         </p>
+        {targetNetwork && (
+          <div className="mt-4 inline-block px-4 py-2 bg-white/5 border border-white/10 rounded-xl">
+            <span className="text-white/60">Network: </span>
+            <span className="font-bold text-white">{targetNetwork}</span>
+          </div>
+        )}
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

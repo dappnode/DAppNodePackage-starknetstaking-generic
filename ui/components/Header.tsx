@@ -29,15 +29,18 @@ const Header: React.FC<HeaderProps> = ({ wallet, onConnect, onDisconnect }) => {
           {wallet.connected ? (
             <div className="flex items-center gap-3">
               <div className="flex flex-col items-end hidden sm:flex">
-                <span className="text-xs font-medium text-white/40">{wallet.network}</span>
+                <span className={`text-xs font-medium ${wallet.isWrongNetwork ? 'text-red-400' : 'text-white/40'}`}>
+                  {wallet.network}
+                  {wallet.isWrongNetwork && ' (Wrong Network)'}
+                </span>
                 <span className="text-sm font-bold">{wallet.address}</span>
               </div>
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all flex items-center gap-2"
+                className={`px-4 py-2 ${wallet.isWrongNetwork ? 'bg-red-500/20 border-red-500/50' : 'bg-white/5 border-white/10'} hover:bg-white/10 border rounded-xl transition-all flex items-center gap-2`}
               >
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span>Connected</span>
+                <div className={`w-2 h-2 rounded-full ${wallet.isWrongNetwork ? 'bg-red-500' : 'bg-green-500'} animate-pulse`} />
+                <span>{wallet.isWrongNetwork ? 'Wrong Network' : 'Connected'}</span>
               </button>
 
               {showDropdown && (

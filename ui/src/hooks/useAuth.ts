@@ -8,6 +8,7 @@ import {
   WalletConnection,
   getWalletType,
 } from '../services/wallet';
+import { NETWORK } from '../config';
 
 export interface AuthState {
   isConnected: boolean;
@@ -18,7 +19,11 @@ export interface AuthState {
   network: 'Mainnet' | 'Sepolia';
   account: AccountInterface | null;
   error: string | null;
+  isWrongNetwork: boolean;
 }
+
+// Expected network from app config (lowercase)
+const expectedNetwork = NETWORK.toLowerCase();
 
 const initialState: AuthState = {
   isConnected: false,
@@ -29,6 +34,12 @@ const initialState: AuthState = {
   network: 'Sepolia',
   account: null,
   error: null,
+  isWrongNetwork: false,
+};
+
+// Check if wallet network matches expected app network
+const checkNetworkMismatch = (walletNetwork: 'Mainnet' | 'Sepolia'): boolean => {
+  return walletNetwork.toLowerCase() !== expectedNetwork;
 };
 
 export const useAuth = () => {
@@ -45,6 +56,7 @@ export const useAuth = () => {
         if (connection) {
           const network = getNetworkFromChainId(connection.chainId);
           const walletType = getWalletType(connection.walletId);
+          const isWrongNetwork = checkNetworkMismatch(network);
 
           setState({
             isConnected: true,
@@ -55,6 +67,7 @@ export const useAuth = () => {
             network,
             account: connection.account,
             error: null,
+            isWrongNetwork,
           });
           return;
         }
@@ -133,11 +146,13 @@ export const useAuth = () => {
 
         // Check if network changed
         const newNetwork = getNetworkFromChainId(connection.chainId);
-        if (newNetwork !== state.network) {
+        const isWrongNetwork = checkNetworkMismatch(newNetwork);
+        if (newNetwork !== state.network || isWrongNetwork !== state.isWrongNetwork) {
           setState(prev => ({
             ...prev,
             network: newNetwork,
             account: connection.account,
+            isWrongNetwork,
           }));
         }
       } catch (error) {
@@ -156,8 +171,9 @@ export const useAuth = () => {
 
     const handleNetworkChanged = (chainId: string) => {
       const newNetwork = getNetworkFromChainId(chainId);
-      if (newNetwork !== state.network) {
-        setState(prev => ({ ...prev, network: newNetwork }));
+      const isWrongNetwork = checkNetworkMismatch(newNetwork);
+      if (newNetwork !== state.network || isWrongNetwork !== state.isWrongNetwork) {
+        setState(prev => ({ ...prev, network: newNetwork, isWrongNetwork }));
       }
     };
 
@@ -177,7 +193,7 @@ export const useAuth = () => {
       }
       window.removeEventListener('focus', handleFocus);
     };
-  }, [state.isConnected, state.address, state.network, state.account]);
+  }, [state.isConnected, state.address, state.network, state.account, state.isWrongNetwork]);
 
   // Connect wallet
   const connect = useCallback(async () => {
@@ -198,8 +214,9 @@ export const useAuth = () => {
       const { address, account, walletId, walletName, chainId } = connection;
       const network = getNetworkFromChainId(chainId);
       const walletType = getWalletType(walletId);
+      const isWrongNetwork = checkNetworkMismatch(network);
 
-      console.log('Wallet connected:', { walletId, walletName, walletType, address });
+      console.log('Wallet connected:', { walletId, walletName, walletType, address, network, isWrongNetwork });
 
       if (!address || address === 'undefined' || address === 'null') {
         throw new Error('Invalid wallet address received');
@@ -214,6 +231,7 @@ export const useAuth = () => {
         network,
         account,
         error: null,
+        isWrongNetwork,
       });
 
       return true;

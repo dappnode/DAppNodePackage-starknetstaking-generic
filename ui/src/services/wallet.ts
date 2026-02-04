@@ -464,6 +464,37 @@ const createSnapAccountInterface = (address: string): AccountInterface => {
       });
       return response;
     },
+    execute: async (calls: any) => {
+      // Normalize calls to array format
+      const callsArray = Array.isArray(calls) ? calls : [calls];
+
+      // Format calls for the Snap
+      const formattedCalls = callsArray.map((call: any) => ({
+        contractAddress: call.contractAddress,
+        entrypoint: call.entrypoint,
+        calldata: call.calldata || [],
+      }));
+
+      const response = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {
+          snapId: STARKNET_SNAP_ID,
+          request: {
+            method: 'starkNet_executeTxn',
+            params: {
+              chainId: SEPOLIA_CHAIN_ID_HEX,
+              senderAddress: address,
+              calls: formattedCalls,
+            },
+          },
+        },
+      });
+
+      // The Snap returns { transaction_hash: string } on success
+      return {
+        transaction_hash: response.transaction_hash || response.transactionHash || response,
+      };
+    },
   } as unknown as AccountInterface;
 };
 

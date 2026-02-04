@@ -12,7 +12,10 @@
       "name": "StarknetStaking Sepolia UI",
       "description": "Web interface for StarkNet staking operations. HTTPS required for wallet connection.",
       "serviceName": "ui",
-      "port": 80
+      "fromSubdomain": "starknetstaking-sepolia",
+      "port": 80,
+      "exposeByDefault": true,
+      "external": false
     }
   ]
 }

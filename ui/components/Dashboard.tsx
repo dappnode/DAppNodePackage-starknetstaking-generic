@@ -27,6 +27,7 @@ interface DashboardProps {
   stakerAddress?: string;
   network?: 'Mainnet' | 'Sepolia';
   unstakeEligibility?: UnstakeEligibility | null;
+  onRefreshData?: () => void;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({
@@ -42,6 +43,7 @@ const Dashboard: React.FC<DashboardProps> = ({
   stakerAddress,
   network = 'Mainnet',
   unstakeEligibility,
+  onRefreshData,
 }) => {
   const [isStakingModalOpen, setIsStakingModalOpen] = useState(false);
   const [isClaimModalOpen, setIsClaimModalOpen] = useState(false);
@@ -220,6 +222,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           stakerAddress={stakerAddress}
           network={network}
           unstakeEligibility={unstakeEligibility}
+          onRefreshData={onRefreshData}
         />
       )}
 
@@ -244,6 +247,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           onSubmit={(data) => {
             onAddValidator(data.amount, data.operator, data.reward);
             setIsStakingModalOpen(false);
+            onRefreshData?.();
           }}
           maxStake={balances.staker.amount}
           account={account}
@@ -259,6 +263,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           onSubmit={(data) => {
             onClaimAllRewards(data.amount);
             setIsClaimModalOpen(false);
+            onRefreshData?.();
           }}
           maxStake={balances.rewards.amount}
           account={account}
@@ -274,6 +279,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           onSubmit={(data) => {
             onUpdateGlobalRewardAddress(data.reward);
             setIsEditRewardModalOpen(false);
+            onRefreshData?.();
           }}
           account={account}
           stakerAddress={stakerAddress}

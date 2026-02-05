@@ -67,8 +67,9 @@ const ActionModal: React.FC<ActionModalProps> = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [txHash, setTxHash] = useState<string | null>(null);
+  const minStake = network === 'Sepolia' ? STAKING_REQUIREMENTS.SEPOLIA : STAKING_REQUIREMENTS.MAINNET;
   const [formData, setFormData] = useState({
-    amount: type === 'claim' ? maxStake : STAKING_REQUIREMENTS.MAINNET,
+    amount: type === 'claim' ? maxStake : minStake,
     operator: '',
     reward: '',
   });
@@ -268,7 +269,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
     }
     if (type === 'claim') return 'Withdraw Rewards';
     if (type === 'unstake') {
-      if (unstakeStatus === 'WAITING_COOLDOWN') return 'Waiting for Cooldown...';
       if (unstakeStatus === 'READY_TO_FINALIZE') return 'Complete Unstake';
       if (unstakeStatus === 'COMPLETED') return 'Unstake Completed';
       return 'Initiate Unstake';
@@ -318,13 +318,17 @@ const ActionModal: React.FC<ActionModalProps> = ({
                   </label>
                   <div className="relative">
                     <input
-                      type="number"
-                      value={formData.amount}
-                      onChange={(e) =>
-                        setFormData({ ...formData, amount: Number(e.target.value) })
-                      }
+                      type="text"
+                      inputMode="decimal"
+                      value={formData.amount === 0 ? '' : formData.amount}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (value === '' || /^\d*\.?\d*$/.test(value)) {
+                          setFormData({ ...formData, amount: value === '' ? 0 : Number(value) });
+                        }
+                      }}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#EC796B] transition-colors"
-                      placeholder="Min 20,000"
+                      placeholder={`Min ${minStake.toLocaleString()}`}
                       disabled={isProcessing}
                     />
                     <div
@@ -439,7 +443,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
                     </p>
                     <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
                       <p className="text-xs text-yellow-400">
-                        A cooldown period of {network === 'Sepolia' ? '5 minutes' : '7 days'} will begin after you initiate unstaking.
+                        A waiting period of {network === 'Sepolia' ? '5 minutes' : '7 days'} will begin after you initiate unstaking.
                       </p>
                     </div>
                   </div>
@@ -454,7 +458,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
                       </div>
                     </div>
                     <p className="text-white/90 font-medium mb-2">
-                      Cooldown Period Active
+                      Waiting Period Active
                     </p>
                     <div className="text-3xl font-mono font-bold text-yellow-400 my-4">
                       {formatDuration(remainingSeconds)}
@@ -481,7 +485,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
                       Ready to Complete Unstake
                     </p>
                     <p className="text-sm text-white/50 mt-2">
-                      The cooldown period has ended. You can now withdraw your staked funds.
+                      The waiting period has ended. You can now withdraw your staked funds.
                     </p>
                     <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
                       <p className="text-xs text-red-400">
@@ -547,25 +551,22 @@ const ActionModal: React.FC<ActionModalProps> = ({
               </div>
             )}
 
-            <button
-              onClick={handleAction}
-              disabled={
-                isProcessing ||
-                !account ||
-                (type === 'unstake' && unstakeStatus === 'WAITING_COOLDOWN') ||
-                (type === 'unstake' && unstakeStatus === 'COMPLETED')
-              }
-              className="w-full py-4 stark-gradient rounded-xl font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 transition-all shadow-lg shadow-[#EC796B]/20"
-            >
-              {isProcessing ? (
-                <>
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  {getButtonText()}
-                </>
-              ) : (
-                getButtonText()
-              )}
-            </button>
+            {!(type === 'unstake' && (unstakeStatus === 'WAITING_COOLDOWN' || unstakeStatus === 'COMPLETED')) && (
+              <button
+                onClick={handleAction}
+                disabled={isProcessing || !account}
+                className="w-full py-4 stark-gradient rounded-xl font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 transition-all shadow-lg shadow-[#EC796B]/20"
+              >
+                {isProcessing ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    {getButtonText()}
+                  </>
+                ) : (
+                  getButtonText()
+                )}
+              </button>
+            )}
 
             {!account && (
               <p className="text-center text-xs text-yellow-500/80">

@@ -29,6 +29,7 @@ interface ValidatorListProps {
   unstakeEligibility?: UnstakeEligibility | null;
   onUnstakeIntentSuccess?: (validatorId: string, txHash: string) => void;
   onUnstakeActionSuccess?: (validatorId: string, txHash: string) => void;
+  onRefreshData?: () => void;
 }
 
 const ValidatorList: React.FC<ValidatorListProps> = ({
@@ -43,6 +44,7 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
   unstakeEligibility,
   onUnstakeIntentSuccess,
   onUnstakeActionSuccess,
+  onRefreshData,
 }) => {
   // Helper to get the correct Voyager URL based on network
   const getVoyagerUrl = (path: string) => {
@@ -181,7 +183,7 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
                   <div className="text-xs font-bold">
                     {v.status === 'exiting' ? (
                       <span className="text-orange-400">
-                        {v.unstakeEligibleAt ? 'Cooldown Active' : 'Initiated'}
+                        {v.unstakeEligibleAt ? 'Waiting Period' : 'Initiated'}
                       </span>
                     ) : v.status === 'exited' ? (
                       <span className="text-gray-400">Completed</span>
@@ -221,13 +223,19 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
               Add Stake
             </button>
 
-            <button
-              onClick={() => setActiveAction({ id: v.id, type: 'unstake' })}
-              disabled={getValidatorUnstakeStatus(v) === 'COMPLETED'}
-              className={`${btnDangerClass} disabled:opacity-30 disabled:cursor-not-allowed`}
-            >
-              {getUnstakeButtonText(v)}
-            </button>
+            {(() => {
+              const status = getValidatorUnstakeStatus(v);
+              // Hide button during waiting period and after completion
+              if (status === 'WAITING_COOLDOWN' || status === 'COMPLETED') return null;
+              return (
+                <button
+                  onClick={() => setActiveAction({ id: v.id, type: 'unstake' })}
+                  className={btnDangerClass}
+                >
+                  {getUnstakeButtonText(v)}
+                </button>
+              );
+            })()}
           </div>
         </div>
       ))}
@@ -239,6 +247,7 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
           onSubmit={() => {
             onClaimRewards(activeAction.id);
             setActiveAction(null);
+            onRefreshData?.();
           }}
           account={account}
           stakerAddress={stakerAddress}
@@ -253,6 +262,7 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
           onSubmit={(data) => {
             onUpdateRewardAddress(activeAction.id, data.reward);
             setActiveAction(null);
+            onRefreshData?.();
           }}
           account={account}
           stakerAddress={stakerAddress}
@@ -269,6 +279,7 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
               onIncreaseStake(activeAction.id, data.amount);
             }
             setActiveAction(null);
+            onRefreshData?.();
           }}
           account={account}
           stakerAddress={stakerAddress}
@@ -294,6 +305,7 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
                 onUnstake(activeAction.id);
               }
               setActiveAction(null);
+              onRefreshData?.();
             }}
             account={account}
             stakerAddress={stakerAddress}
@@ -304,11 +316,13 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
               if (onUnstakeIntentSuccess) {
                 onUnstakeIntentSuccess(activeAction.id, txHash);
               }
+              onRefreshData?.();
             }}
             onUnstakeActionSuccess={(txHash) => {
               if (onUnstakeActionSuccess) {
                 onUnstakeActionSuccess(activeAction.id, txHash);
               }
+              onRefreshData?.();
             }}
           />
         );

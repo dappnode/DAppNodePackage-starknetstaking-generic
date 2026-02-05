@@ -152,65 +152,56 @@ const App: React.FC = () => {
     rewardsBalance.reset();
   };
 
-  const handleAddValidator = async (amount: number, operator: string, reward: string) => {
+  const handleAddValidator = async (_amount: number, operator: string, reward: string) => {
     if (!auth.account) return;
 
-    const result = await stakingHook.stake(auth.account, amount, operator, reward);
+    // Note: The ActionModal already handles the approve + stake transactions
+    // This handler only updates local state and refreshes data
 
-    if (result.success) {
-      // Update operator and rewards addresses
-      setOperatorAddress(operator);
-      setRewardsAddress(reward);
+    // Update operator and rewards addresses
+    setOperatorAddress(operator);
+    setRewardsAddress(reward);
 
-      // Refresh all data
-      await refreshData();
-      operatorBalance.fetchBalance(operator);
-      rewardsBalance.fetchBalance(reward);
-    }
+    // Refresh all data
+    await refreshData();
+    operatorBalance.fetchBalance(operator);
+    rewardsBalance.fetchBalance(reward);
   };
 
   const handleUpdateRewardAddress = async (_id: string, newAddress: string) => {
     if (!auth.account) return;
 
-    const result = await stakingHook.updateRewardAddress(auth.account, newAddress);
-
-    if (result.success) {
-      setRewardsAddress(newAddress);
-      await refreshData();
-      rewardsBalance.fetchBalance(newAddress);
-    }
+    // Note: The ActionModal already handles the change reward address transaction
+    // This handler only updates local state and refreshes data
+    setRewardsAddress(newAddress);
+    await refreshData();
+    rewardsBalance.fetchBalance(newAddress);
   };
 
   const handleUpdateGlobalRewardAddress = async (newAddress: string) => {
     if (!auth.account) return;
 
-    const result = await stakingHook.updateRewardAddress(auth.account, newAddress);
-
-    if (result.success) {
-      setRewardsAddress(newAddress);
-      await refreshData();
-      rewardsBalance.fetchBalance(newAddress);
-    }
+    // Note: The ActionModal already handles the change reward address transaction
+    // This handler only updates local state and refreshes data
+    setRewardsAddress(newAddress);
+    await refreshData();
+    rewardsBalance.fetchBalance(newAddress);
   };
 
   const handleClaimRewards = async (_id: string) => {
     if (!auth.account || !auth.address) return;
 
-    const result = await stakingHook.claimStakingRewards(auth.account, auth.address);
-
-    if (result.success) {
-      await refreshData();
-    }
+    // Note: The ActionModal already handles the claim transaction
+    // This handler only refreshes data
+    await refreshData();
   };
 
   const handleClaimAllRewards = async (_amount: number) => {
     if (!auth.account || !auth.address) return;
 
-    const result = await stakingHook.claimStakingRewards(auth.account, auth.address);
-
-    if (result.success) {
-      await refreshData();
-    }
+    // Note: The ActionModal already handles the claim transaction
+    // This handler only refreshes data
+    await refreshData();
   };
 
   // Show loading state
@@ -258,6 +249,7 @@ const App: React.FC = () => {
             stakerAddress={auth.address || undefined}
             network={auth.network}
             unstakeEligibility={unstakeEligibility}
+            onRefreshData={refreshData}
           />
         )}
       </main>

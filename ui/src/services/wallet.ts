@@ -22,9 +22,10 @@ const walletTypeMap: Record<string, string> = {
 };
 
 // Detect network from chain ID
+// Starknet chainId formats: SN_MAIN, SN_SEPOLIA, or hex 0x534e5f4d41494e (mainnet), 0x534e5f5345504f4c4941 (sepolia)
 export const getNetworkFromChainId = (chainId: string): 'Mainnet' | 'Sepolia' => {
-  const chainIdHex = chainId.toLowerCase();
-  if (chainIdHex.includes('mainnet') || chainIdHex === '0x534e5f4d41494e') {
+  const chainIdLower = chainId.toLowerCase();
+  if (chainIdLower.includes('main') || chainIdLower === '0x534e5f4d41494e') {
     return 'Mainnet';
   }
   return 'Sepolia';

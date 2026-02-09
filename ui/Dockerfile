@@ -13,10 +13,10 @@ RUN npm ci
 COPY . .
 
 # Build arguments for environment variables
-ARG VITE_STARKNET_NETWORK=sepolia
+ARG VITE_STARKNET_NETWORK=mainnet
 ARG VITE_STARKNET_RPC_URL=/rpc
 ARG VITE_STRK_TOKEN_ADDRESS=0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d
-ARG VITE_STAKING_CONTRACT_ADDRESS_MAINNET=0x0001d0bf9f687cd8aa550a8a07b9b5b1a9e7e4bb86dc1ceeab89cd156bf5ad29
+ARG VITE_STAKING_CONTRACT_ADDRESS_MAINNET=0x00ca1702e64c81d9a07b86bd2c540188d92a2c73cf5cc0e508d949015e7e84a7
 ARG VITE_STAKING_CONTRACT_ADDRESS_SEPOLIA=0x03745ab04a431fc02871a139be6b93d9260b0ff3e779ad9c8b377183b23109f1
 ARG VITE_STAKING_MIN_MAINNET=20000
 ARG VITE_STAKING_MIN_SEPOLIA=1
@@ -47,7 +47,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Default RPC target (will be overridden by environment variable)
-ENV RPC_TARGET=http://execution.starknet-sepolia.dncore.dappnode:6060/v0_9
+ENV RPC_TARGET=http://execution.starknet.staker.dappnode:6060/v0_9
 
 # Expose port 80
 EXPOSE 80

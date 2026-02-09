@@ -143,7 +143,7 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
                       className="hover:text-white transition-colors flex items-center gap-2 group/link"
                       title={v.id}
                     >
-                      <span className="truncate max-w-[120px]">
+                      <span>
                         {v.id.length > 10 ? `${v.id.slice(0, 6)}...${v.id.slice(-4)}` : v.id.toUpperCase()}
                       </span>
                       <Icons.ExternalLink />

@@ -95,7 +95,7 @@ Once connected, you'll see the **Dashboard** with your account balances! 🎊
 
 From the Dashboard, click **Create Validator**. The UI handles the full staking process for you! 🪄
 
-![Create Validator](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-create-validator.png)
+<img src="https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-create-validator.png" alt="Create Validator" width="500" />
 
 ### Step 1: Approve STRK ✍️
 

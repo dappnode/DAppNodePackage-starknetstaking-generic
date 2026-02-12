@@ -18,8 +18,10 @@ This guide walks you through the **complete process of becoming a Starknet valid
 ## 1️⃣ Install the Starknet Staking Package on DAppNode
 
 1. Open your DAppNode UI.
-2. Go to the **DAppStore** and search for `starknetstaking`.
-3. Click **Install** 🎯
+2. Go to the **Stakers** tab and select **Starknet** 🎯
+3. Follow the setup flow to install the package.
+
+![Stakers tab](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/stakers-tab.png)
 
 During the installation process, you will need to enter:
 
@@ -36,8 +38,7 @@ During the installation process, you will need to enter:
 
 Open the package UI from DAppNode. The **landing page** guides you through the entire setup! 🧭
 
-<!-- TODO: Add screenshot of the landing page -->
-<!-- ![Landing page](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-landing.png) -->
+![Landing page](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-landing.png)
 
 ### 🦊 Choose Your Wallet
 
@@ -82,10 +83,11 @@ The staking package needs your **operator** private key for attestations. Export
 3. Select your wallet and approve the connection.
 4. The UI will verify you are on the correct network (Mainnet or Sepolia).
 
+![Connect Wallet](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-connect-wallet.png)
+
 Once connected, you'll see the **Dashboard** with your account balances! 🎊
 
-<!-- TODO: Add screenshot of the dashboard -->
-<!-- ![Dashboard](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-dashboard.png) -->
+![Dashboard](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-dashboard.png)
 
 ---
 
@@ -93,8 +95,7 @@ Once connected, you'll see the **Dashboard** with your account balances! 🎊
 
 From the Dashboard, click **Create Validator**. The UI handles the full staking process for you! 🪄
 
-<!-- TODO: Add screenshot of the create validator modal -->
-<!-- ![Create Validator](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-create-validator.png) -->
+![Create Validator](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-create-validator.png)
 
 ### Step 1: Approve STRK ✍️
 
@@ -118,8 +119,7 @@ The Dashboard shows your validator status with real-time data:
 - 💰 **Staked amount** — Total STRK staked
 - 🎁 **Rewards earned** — Accumulated rewards
 
-<!-- TODO: Add screenshot of the validator card -->
-<!-- ![Validator](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-validator.png) -->
+![Validator](https://github.com/dappnode/DAppNodePackage-starknetstaking-generic/raw/main/images/ui-validator.png)
 
 ### 🎮 Available Actions
 

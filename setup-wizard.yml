@@ -24,7 +24,9 @@ fields:
   - id: provider_http_url
     target:
       type: environment
-      service: staking
+      service:
+        - staking
+        - ui
       name: PROVIDER_HTTP_URL
     title: StarkNet Provider HTTP URL
     description: "HTTP URL of the StarkNet full node (e.g., Juno). Required for the validator to query blockchain data."

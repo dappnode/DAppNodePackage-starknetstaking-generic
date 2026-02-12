@@ -47,7 +47,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Default RPC target (will be overridden by environment variable)
-ENV RPC_TARGET=http://execution.starknet.dncore.dappnode:6060/v0_9
+ENV PROVIDER_HTTP_URL=http://execution.starknet.dncore.dappnode:6060/v0_9
 
 # Expose port 80
 EXPOSE 80

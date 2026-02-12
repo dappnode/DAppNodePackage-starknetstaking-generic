@@ -13,7 +13,7 @@ services:
       args:
         VITE_STARKNET_NETWORK: mainnet
     environment:
-      RPC_TARGET: "http://execution.starknet.dncore.dappnode:6060/v0_9"
+      PROVIDER_HTTP_URL: "http://execution.starknet.dncore.dappnode:6060"
     networks:
       - dncore_network
 networks:

@@ -26,7 +26,7 @@ services:
         VITE_STAKING_MIN_SEPOLIA: 1
     restart: unless-stopped
     environment:
-      RPC_TARGET: "http://execution.starknet.dncore.dappnode:6060/v0_9"
+      PROVIDER_HTTP_URL: ""
     networks:
       - dncore_network
 networks:

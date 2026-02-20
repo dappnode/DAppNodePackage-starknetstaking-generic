@@ -34,10 +34,14 @@ const Landing: React.FC<LandingProps> = ({ onConnect, targetNetwork, isWrongNetw
     {
       icon: <Icons.Coins />,
       title: "3. Acquire STRK Tokens",
-      description: "Get STRK tokens via bridging from Ethereum or swapping on Starknet DEXs.",
+      description: "Get STRK tokens via bridging from Ethereum, swapping on Starknet DEXs, or buying directly with fiat.",
       links: [
         { name: "StarkGate Bridge", url: "https://starkgate.starknet.io/ethereum/bridge?mode=deposit&token=eth" },
-        { name: "AVNU Swap", url: "https://app.avnu.fi/es" }
+        { name: "AVNU Swap", url: "https://app.avnu.fi/es" },
+        { name: "Ramp", url: "https://rampnetwork.com/" },
+        { name: "Banxa", url: "https://banxa.com/" },
+        { name: "MoonPay", url: "https://www.moonpay.com/" },
+        { name: "Onramper", url: "https://www.onramper.com/" }
       ]
     },
     {
@@ -73,6 +77,17 @@ const Landing: React.FC<LandingProps> = ({ onConnect, targetNetwork, isWrongNetw
             <span className="font-bold text-white">{targetNetwork}</span>
           </div>
         )}
+        <div className="mt-6">
+          <a
+            href="https://docs.dappnode.io/docs/user/staking/starknet/solo/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl font-medium transition-all"
+          >
+            <Icons.Docs />
+            Read the Docs
+          </a>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

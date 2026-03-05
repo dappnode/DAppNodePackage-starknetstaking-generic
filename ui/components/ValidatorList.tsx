@@ -137,7 +137,7 @@ const ValidatorList: React.FC<ValidatorListProps> = ({
                   <div className="w-1.5 h-1.5 rounded-full bg-white/10 flex-shrink-0" />
                   <div className={`${valueClass} text-white/90 min-w-0`}>
                     <a
-                      href={getVoyagerUrl(`/staking?validator=${v.operatorAddress}`)}
+                      href={getVoyagerUrl(`/staking?validator=${v.stakerAddress}`)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-white transition-colors flex items-center gap-2 group/link"

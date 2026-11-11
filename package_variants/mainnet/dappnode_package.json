@@ -1,21 +1,21 @@
 {
-  "name": "starknetstaking.dnp.dappnode.eth",
-  "version": "0.1.1",
-  "shortDescription": "Attestation tool for StarkNet validators",
-  "links": {
-    "ui": "http://ui.starknetstaking.dappnode/",
-    "Voyager Block Explorer": "https://voyager.online/",
-    "Starkscan Block Explorer": "https://starkscan.co/"
-  },
   "exposable": [
     {
-      "name": "StarknetStaking UI",
       "description": "Web interface for StarkNet staking operations. HTTPS required for wallet connection.",
-      "serviceName": "ui",
-      "fromSubdomain": "starknetstaking",
-      "port": 80,
       "exposeByDefault": true,
-      "external": false
+      "external": false,
+      "fromSubdomain": "starknetstaking",
+      "name": "StarknetStaking UI",
+      "port": 80,
+      "serviceName": "ui"
     }
-  ]
+  ],
+  "links": {
+    "Starkscan Block Explorer": "https://starkscan.co/",
+    "Voyager Block Explorer": "https://voyager.online/",
+    "ui": "http://ui.starknetstaking.dappnode/"
+  },
+  "name": "starknetstaking.dnp.dappnode.eth",
+  "shortDescription": "Attestation tool for StarkNet validators",
+  "version": "0.1.3"
 }

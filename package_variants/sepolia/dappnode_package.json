@@ -1,21 +1,21 @@
 {
-  "name": "starknetstaking-sepolia.dnp.dappnode.eth",
-  "version": "0.1.1",
-  "shortDescription": "Attestation tool for StarkNet validators in Sepolia",
-  "links": {
-    "ui": "http://ui.starknetstaking-sepolia.dappnode/",
-    "Voyager Block Explorer": "https://sepolia.voyager.online/",
-    "Starkscan Block Explorer": "https://sepolia.starkscan.co/"
-  },
   "exposable": [
     {
-      "name": "StarknetStaking Sepolia UI",
       "description": "Web interface for StarkNet staking operations. HTTPS required for wallet connection.",
-      "serviceName": "ui",
-      "fromSubdomain": "starknetstaking-sepolia",
-      "port": 80,
       "exposeByDefault": true,
-      "external": false
+      "external": false,
+      "fromSubdomain": "starknetstaking-sepolia",
+      "name": "StarknetStaking Sepolia UI",
+      "port": 80,
+      "serviceName": "ui"
     }
-  ]
+  ],
+  "links": {
+    "Starkscan Block Explorer": "https://sepolia.starkscan.co/",
+    "Voyager Block Explorer": "https://sepolia.voyager.online/",
+    "ui": "http://ui.starknetstaking-sepolia.dappnode/"
+  },
+  "name": "starknetstaking-sepolia.dnp.dappnode.eth",
+  "shortDescription": "Attestation tool for StarkNet validators in Sepolia",
+  "version": "0.1.3"
 }

@@ -1,16 +1,26 @@
 {
-  "upstreamVersion": "v0.3.0",
-  "upstreamRepo": "NethermindEth/starknet-staking-v2",
-  "upstreamArg": "UPSTREAM_VERSION",
-  "type": "service",
-  "description": "StarkNet validator attestation tool, see the [Dappnode Docs](https://docs.dappnode.io/docs/user/staking/starknet/solo) for more info",
+  "architectures": [
+    "linux/amd64",
+    "linux/arm64"
+  ],
   "author": "Dappnode Association <admin@dappnode.io> (https://github.com/dappnode)",
-  "categories": ["Blockchain"],
-  "keywords": ["starknet", "staking", "validator", "attestation"],
-  "architectures": ["linux/amd64", "linux/arm64"],
+  "categories": [
+    "Blockchain"
+  ],
+  "description": "StarkNet validator attestation tool, see the [Dappnode Docs](https://docs.dappnode.io/docs/user/staking/starknet/solo) for more info",
+  "keywords": [
+    "starknet",
+    "staking",
+    "validator",
+    "attestation"
+  ],
+  "license": "GPL-3.0",
   "links": {
-    "ui": "http://ui.starknetstaking.dappnode/",
-    "home": "https://github.com/dappnode/DAppNodePackage-starknetstaking-generic"
+    "home": "https://github.com/dappnode/DAppNodePackage-starknetstaking-generic",
+    "ui": "http://ui.starknetstaking.dappnode/"
   },
-  "license": "GPL-3.0"
+  "type": "service",
+  "upstreamArg": "UPSTREAM_VERSION",
+  "upstreamRepo": "NethermindEth/starknet-staking-v2",
+  "upstreamVersion": "v0.4.0"
 }
